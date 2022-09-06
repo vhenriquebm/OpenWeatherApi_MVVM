@@ -26,7 +26,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        vm.fetchData(latitude: 10.99, longitude: 44.34)
+//        vm.fetchData(latitude: 10.99, longitude: 44.34)
+        vm.getCitesData { cities in
+            
+            print (cities)
+        }
     }
     
     //MARK: - Private methods

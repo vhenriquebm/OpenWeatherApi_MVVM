@@ -9,13 +9,22 @@ import Foundation
 
 class ViewModel {
     
-    let service = ApiService()
+    let weatherService = OpenWeatherService()
+    let apiService = ApiService ()
+    
     
     public func fetchData (latitude: Double, longitude: Double) {
         
-        service.fetchWeatherData(latitude: latitude, longitude: latitude) { data in
+        weatherService.fetchWeatherData(latitude: latitude, longitude: latitude) { data in
             
             print ("Data na Vm")
+        }
+    }
+    
+    
+    public func getCitesData(completion: @escaping ([City]) -> ()) {
+        apiService.fetchCitiesData { cities in
+            completion(cities)
         }
     }
 }
