@@ -9,6 +9,8 @@ import Foundation
 
 class ViewModel {
     
+    var citiesList:[City] = []
+    
     let weatherService = OpenWeatherService()
     let apiService = ApiService ()
     
@@ -24,7 +26,14 @@ class ViewModel {
     
     public func getCitesData(completion: @escaping ([City]) -> ()) {
         apiService.fetchCitiesData { cities in
+            
             completion(cities)
+            self.citiesList = cities
+            print (self.citiesList)
         }
+    }
+    
+    public func getCitiesList () -> [City] {
+        return citiesList
     }
 }

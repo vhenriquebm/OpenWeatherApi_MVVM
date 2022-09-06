@@ -11,11 +11,9 @@ class HomeViewController: UIViewController {
     
     let vm = ViewModel()
     
-    
-    
     //MARK: - Constants
 
-    let citieslist = ["São Paulo","São Paulo","São Paulo","São Paulo","São Paulo"]
+    var citieslist:[City] = []
     
     //MARK: - Properties
     
@@ -27,9 +25,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
 //        vm.fetchData(latitude: 10.99, longitude: 44.34)
+        getCities()
+    }
+    
+    func getCities () {
         vm.getCitesData { cities in
+            print ("As Cities na VC são \(cities)")
             
-            print (cities)
+            self.citieslist = cities
+            DispatchQueue.main.async {
+                self.table.reloadData()
+            }
         }
     }
     
@@ -58,8 +64,8 @@ extension HomeViewController: UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: CityTableViewCell.identifier) as? CityTableViewCell  {
             
-            cell.cityName.text = "teste"
-            
+            let index = indexPath.row
+            cell.cityName.text = citieslist[index].cidade
             return cell
         }
         return UITableViewCell()

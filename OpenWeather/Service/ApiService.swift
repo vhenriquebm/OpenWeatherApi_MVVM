@@ -26,7 +26,7 @@ class ApiService {
             }
             
             if let response = response {
-                print (response)
+               // print (response)
             }
             
             do {
@@ -34,8 +34,9 @@ class ApiService {
 
                 let decoder = JSONDecoder()
                 let cities = try decoder.decode([City].self, from: data)
-                print (cities)
                 
+                completion(cities)
+            
             } catch  {
                 print ("DEBUG\(error)")
             }
