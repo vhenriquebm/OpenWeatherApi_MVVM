@@ -10,14 +10,15 @@ import Foundation
 class OpenWeatherService {
     
     private let key = "13d457ce5f7c2194e5651c8dd4f9b7d7"
+    private let lang = "pt_br"
     
     //MARK: - Public methods
     
     public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
         
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid="
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(key)&lang=\(lang)"
         
-        guard let url = URL(string: urlString + key) else {return}
+        guard let url = URL(string: urlString) else {return}
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             

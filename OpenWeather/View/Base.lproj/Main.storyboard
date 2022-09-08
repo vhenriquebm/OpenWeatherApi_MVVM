@@ -79,14 +79,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cidade 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-Y9-IDt">
-                                <rect key="frame" x="20" y="88" width="374" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-Y9-IDt">
+                                <rect key="frame" x="20" y="88" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo Limpo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVQ-4v-TWM">
-                                <rect key="frame" x="20" y="117.5" width="374" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVQ-4v-TWM">
+                                <rect key="frame" x="20" y="138" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
                                 <nil key="highlightedColor"/>
@@ -440,15 +440,21 @@
                     <connections>
                         <outlet property="acitivityIndicator" destination="efz-Dy-AMa" id="FTw-GT-qJR"/>
                         <outlet property="cityLabel" destination="i1M-Y9-IDt" id="BN1-Pz-zBk"/>
+                        <outlet property="firstView" destination="vPx-ML-svP" id="jZn-vq-9ZJ"/>
+                        <outlet property="footerInformation" destination="Nhi-9W-1Wd" id="KIQ-Jm-IlD"/>
+                        <outlet property="footerLabel" destination="TjW-QZ-DiS" id="gKp-sk-Xgi"/>
                         <outlet property="humidityLabel" destination="wMB-pN-3DG" id="vqR-cu-a78"/>
                         <outlet property="latitudeLabel" destination="c1J-4Z-51o" id="059-OO-uiK"/>
                         <outlet property="longitudeLabel" destination="SPr-NF-7dU" id="YRV-Xo-ALE"/>
                         <outlet property="maximumTemperatureLabel" destination="p5i-Ac-xLb" id="ZZl-3m-Mon"/>
                         <outlet property="minimumTemperatureLabel" destination="InR-Eo-qna" id="frm-mq-onc"/>
                         <outlet property="pressureLabel" destination="d12-Oi-rDe" id="wO9-4M-WKW"/>
+                        <outlet property="secondView" destination="SWf-1h-Xcj" id="4JV-1I-tXm"/>
                         <outlet property="sunriseLabel" destination="Zje-wq-KNa" id="xvd-gr-fC2"/>
                         <outlet property="temperatureLabel" destination="Wk4-h7-Cb9" id="eJJ-wd-J48"/>
                         <outlet property="thermalSensationLabel" destination="jp9-VV-77e" id="6gW-u9-akk"/>
+                        <outlet property="watherDescriptionLabel" destination="RVQ-4v-TWM" id="cn4-tK-RMP"/>
+                        <outlet property="weatherStackView" destination="pkh-nD-ZHK" id="rEE-xe-Vj7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wcx-j6-2Ry" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
