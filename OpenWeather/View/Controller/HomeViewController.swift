@@ -24,14 +24,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-//        vm.fetchData(latitude: 10.99, longitude: 44.34)
         getCities()
     }
     
     func getCities () {
         vm.getCitesData { cities in
-            print ("As Cities na VC são \(cities)")
-            
             self.citieslist = cities
             DispatchQueue.main.async {
                 self.table.reloadData()
@@ -51,6 +48,13 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
+        
+        controller.city = citieslist[indexPath.row]
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
     }
 }
 

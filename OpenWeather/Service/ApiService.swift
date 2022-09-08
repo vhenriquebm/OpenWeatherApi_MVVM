@@ -25,10 +25,6 @@ class ApiService {
                 return
             }
             
-            if let response = response {
-               // print (response)
-            }
-            
             do {
                 guard let data = data else {return}
 

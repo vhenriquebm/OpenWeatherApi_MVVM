@@ -26,16 +26,13 @@ class OpenWeatherService {
                 return
             }
             
-            if let response = response {
-               // print (response)
-            }
-            
             do {
                 guard let data = data else {return}
 
                 let decoder = JSONDecoder()
                 let weatherData = try decoder.decode(Welcome.self, from: data)
-                print (weatherData)
+                
+                completion(weatherData)
                 
             } catch  {
                 print ("DEBUG\(error)")

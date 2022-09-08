@@ -15,11 +15,11 @@ class ViewModel {
     let apiService = ApiService ()
     
     
-    public func fetchData (latitude: Double, longitude: Double) {
+    public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
         
         weatherService.fetchWeatherData(latitude: latitude, longitude: latitude) { data in
             
-            print ("Data na Vm")
+            completion (data)
         }
     }
     
@@ -29,7 +29,6 @@ class ViewModel {
             
             completion(cities)
             self.citiesList = cities
-            print (self.citiesList)
         }
     }
     
