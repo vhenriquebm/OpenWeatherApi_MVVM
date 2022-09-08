@@ -11,12 +11,13 @@ class OpenWeatherService {
     
     private let key = "13d457ce5f7c2194e5651c8dd4f9b7d7"
     private let lang = "pt_br"
+    private let unit = "metric"
     
     //MARK: - Public methods
     
     public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
         
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(key)&lang=\(lang)"
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(key)&lang=\(lang)&units=\(unit)"
         
         guard let url = URL(string: urlString) else {return}
         
