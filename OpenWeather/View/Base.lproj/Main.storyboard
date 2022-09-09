@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="84"/>
+            <point key="canvasLocation" x="1087" y="92"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="wJ6-fg-Yh8">
@@ -91,17 +91,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPx-ML-svP">
-                                <rect key="frame" x="20" y="146" width="140" height="86"/>
+                                <rect key="frame" x="20" y="146" width="134" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fy8-tc-Cuo">
-                                        <rect key="frame" x="8" y="8" width="124" height="20.5"/>
+                                        <rect key="frame" x="8" y="8" width="118" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wk4-h7-Cb9">
-                                        <rect key="frame" x="8" y="36.5" width="124" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="8" y="36.5" width="118" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -117,7 +117,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWf-1h-Xcj">
-                                <rect key="frame" x="254" y="146" width="140" height="86"/>
+                                <rect key="frame" x="248" y="146" width="146" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-kD-sMw">
                                         <rect key="frame" x="8" y="14.5" width="55" height="13.5"/>
@@ -132,13 +132,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5i-Ac-xLb">
-                                        <rect key="frame" x="125.5" y="11" width="6.5" height="20.5"/>
+                                        <rect key="frame" x="131.5" y="11" width="6.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InR-Eo-qna">
-                                        <rect key="frame" x="125.5" y="31.5" width="0.0" height="22.5"/>
+                                        <rect key="frame" x="131.5" y="31.5" width="0.0" height="22.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -417,7 +417,7 @@
                             <constraint firstItem="xmU-yI-Xhf" firstAttribute="trailing" secondItem="pkh-nD-ZHK" secondAttribute="trailing" constant="20" id="CkQ-7Z-6Wd"/>
                             <constraint firstItem="i1M-Y9-IDt" firstAttribute="top" secondItem="xmU-yI-Xhf" secondAttribute="top" id="InS-k2-SaA"/>
                             <constraint firstItem="vPx-ML-svP" firstAttribute="bottom" secondItem="SWf-1h-Xcj" secondAttribute="bottom" id="J3w-DM-k6q"/>
-                            <constraint firstAttribute="trailing" secondItem="vPx-ML-svP" secondAttribute="trailing" constant="254" id="KMm-92-Cbj"/>
+                            <constraint firstAttribute="trailing" secondItem="vPx-ML-svP" secondAttribute="trailing" constant="260" id="KMm-92-Cbj"/>
                             <constraint firstItem="pkh-nD-ZHK" firstAttribute="top" secondItem="vPx-ML-svP" secondAttribute="bottom" constant="67" id="Kxo-6j-4WL"/>
                             <constraint firstItem="pkh-nD-ZHK" firstAttribute="trailing" secondItem="i1M-Y9-IDt" secondAttribute="trailing" id="LNc-Gc-hQW"/>
                             <constraint firstItem="TjW-QZ-DiS" firstAttribute="bottom" secondItem="xmU-yI-Xhf" secondAttribute="bottom" id="Nhi-9W-1Wd"/>
@@ -458,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wcx-j6-2Ry" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295.6521739130435" y="83.705357142857139"/>
+            <point key="canvasLocation" x="1725" y="92"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h56-cW-bBp">
@@ -476,7 +476,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gea-Iy-jcV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-86" y="84"/>
+            <point key="canvasLocation" x="448" y="92"/>
         </scene>
     </scenes>
     <resources>

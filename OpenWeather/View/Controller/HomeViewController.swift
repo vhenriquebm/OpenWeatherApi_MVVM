@@ -9,12 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    //MARK: - Constants
+    //MARK: - Properties
     
     private var citieslist:[City] = []
-    var vm: ViewModelProtocol?
-    
-    //MARK: - Properties
+    var delegate: ViewModelProtocol?
     
     @IBOutlet weak var table: UITableView!
 
@@ -22,21 +20,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureVm()
-        configureUI()
+        configureDelegates()
         getCities()
-        
+        self.title = "Cidades"
     }
     
     //MARK: - Private methods
-    private func configureUI() {
-        table.delegate = self
-        table.dataSource = self
-        
-    }
     
     private func getCities () {
-        vm?.getCitesData { cities in
+        delegate?.getCitesData { cities in
             self.citieslist = cities
             DispatchQueue.main.async {
                 self.table.reloadData()
@@ -44,12 +36,15 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func configureVm () {
-        self.vm = ViewModel()
+    private func configureDelegates () {
+        self.delegate = ViewModel()
+        table.delegate = self
+        table.dataSource = self
     }
 }
 
 //MARK: - UITableViewDelegate
+
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

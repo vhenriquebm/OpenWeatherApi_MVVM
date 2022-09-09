@@ -37,7 +37,7 @@ class OpenWeatherService {
                 completion(weatherData)
                 
             } catch  {
-                print ("DEBUG\(error)")
+                print ("DEBUG: \(error)")
             }
             
         }

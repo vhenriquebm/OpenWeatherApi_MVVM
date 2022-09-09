@@ -9,30 +9,22 @@ import Foundation
 
 class ViewModel: ViewModelProtocol {
     
-    var citiesList:[City] = []
+    //MARK: - Properties
     
-    let weatherService = OpenWeatherService()
-    let apiService = ApiService ()
+    private let weatherService = OpenWeatherService()
+    private let apiService = ApiService ()
     
-    
-    public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
-        
-        weatherService.fetchWeatherData(latitude: latitude, longitude: latitude) { data in
-            
-            completion (data)
-        }
-    }
-    
+    //MARK: - Public methods
     
     public func getCitesData(completion: @escaping ([City]) -> ()) {
         apiService.fetchCitiesData { cities in
-            
             completion(cities)
-            self.citiesList = cities
         }
     }
     
-    public func getCitiesList () -> [City] {
-        return citiesList
+    public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
+        weatherService.fetchWeatherData(latitude: latitude, longitude: latitude) { data in
+            completion (data)
+        }
     }
 }
