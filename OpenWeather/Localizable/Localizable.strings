@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  OpenWeather
+
+  Created by vitor henrique on 09/09/22.
+  
+*/
+
+//MARK: - Home
+"home.title" = "Cidades";
+
+//MARK: - Detalhes
+
+"details.title" = "Detalhes";

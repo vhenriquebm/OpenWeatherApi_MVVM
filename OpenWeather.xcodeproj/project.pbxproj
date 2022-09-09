@@ -16,6 +16,8 @@
 		33B7673B28CB68F60036D973 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7673A28CB68F60036D973 /* Extensions.swift */; };
 		33B7673D28CB69870036D973 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7673C28CB69870036D973 /* ViewModelProtocol.swift */; };
 		33B7673F28CB7C090036D973 /* NumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7673E28CB7C090036D973 /* NumberUtils.swift */; };
+		33B7674428CBAA960036D973 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33B7674328CBAA960036D973 /* Localizable.strings */; };
+		33B7674628CBAC100036D973 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7674528CBAC100036D973 /* Localizable.swift */; };
 		33D04B7028CA5B0F0030B8B9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D04B6F28CA5B0F0030B8B9 /* DateUtils.swift */; };
 		33E7815B28C78E5A001DB863 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7815A28C78E5A001DB863 /* AppDelegate.swift */; };
 		33E7815D28C78E5A001DB863 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7815C28C78E5A001DB863 /* SceneDelegate.swift */; };
@@ -36,6 +38,8 @@
 		33B7673A28CB68F60036D973 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		33B7673C28CB69870036D973 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		33B7673E28CB7C090036D973 /* NumberUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberUtils.swift; sourceTree = "<group>"; };
+		33B7674328CBAA960036D973 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		33B7674528CBAC100036D973 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		33D04B6F28CA5B0F0030B8B9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		33E7815728C78E5A001DB863 /* OpenWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E7815A28C78E5A001DB863 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		33B7674228CBAA810036D973 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				33B7674328CBAA960036D973 /* Localizable.strings */,
+				33B7674528CBAC100036D973 /* Localizable.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		33D04B6E28CA5B010030B8B9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 		33E7815928C78E5A001DB863 /* OpenWeather */ = {
 			isa = PBXGroup;
 			children = (
+				33B7674228CBAA810036D973 /* Localizable */,
 				33E7817428C78F1D001DB863 /* Application */,
 				33E7817328C78F0F001DB863 /* Service */,
 				33E7817228C78F09001DB863 /* Model */,
@@ -239,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33E7816728C78E5C001DB863 /* LaunchScreen.storyboard in Resources */,
+				33B7674428CBAA960036D973 /* Localizable.strings in Resources */,
 				33E7816428C78E5C001DB863 /* Assets.xcassets in Resources */,
 				33E7816228C78E5A001DB863 /* Main.storyboard in Resources */,
 			);
@@ -258,6 +273,7 @@
 				33A1E44228C7A1A400592A2D /* CityTableViewCell.swift in Sources */,
 				33B7673D28CB69870036D973 /* ViewModelProtocol.swift in Sources */,
 				33E7815D28C78E5A001DB863 /* SceneDelegate.swift in Sources */,
+				33B7674628CBAC100036D973 /* Localizable.swift in Sources */,
 				33A1E44A28C7C64600592A2D /* ApiService.swift in Sources */,
 				33A1E44C28C7C6A500592A2D /* City.swift in Sources */,
 				33B7673B28CB68F60036D973 /* Extensions.swift in Sources */,

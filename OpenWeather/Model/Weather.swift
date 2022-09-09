@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - Welcome
+
 struct Welcome: Codable {
     let coord: Coord?
     let weather: [Weather]?
@@ -40,6 +41,7 @@ struct Main: Codable {
     let pressure, humidity, seaLevel, grndLevel: Int?
     
     enum CodingKeys: String, CodingKey {
+        
         case temp
         case feelsLike = "feels_like"
         case tempMin = "temp_min"
