@@ -23,12 +23,8 @@ class HomeViewController: UIViewController {
         configureDelegates()
         getCities()
         self.title = "Cidades"
-        
     }
-    
-    
-  
-    
+
     //MARK: - Private methods
     
     private func getCities () {

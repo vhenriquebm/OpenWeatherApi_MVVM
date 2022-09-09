@@ -14,21 +14,15 @@ class NumberUtils {
     public static func roundNumber (value: Double) -> String  {
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 0
-        let formattedAmount = formatter.string(from: value as NSNumber)
-        if let result = formattedAmount {
-            return result
-        }
+        if let result = formatter.string(from: value as NSNumber) {return result}
         return ""
     }
     
-    public static func roundNumberWithComma (value: Double?) -> String  {
+    public static func roundNumberWithComma (value: Double) -> String  {
         formatter.decimalSeparator = ","
         formatter.maximumFractionDigits = 5
         formatter.numberStyle = .decimal
-        let formattedAmount = formatter.string(from: value! as NSNumber)
-        if let result = formattedAmount {
-            return result
-        }
+        if let result = formatter.string(from: value as NSNumber) {return result}
         return ""
     }
 }

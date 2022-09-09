@@ -9,19 +9,21 @@ import Foundation
 
 class DateUtils {
     
+    static let formatter = DateFormatter()
+    static let date = Date.now
+
     static func getCurrentDate () -> String {
         let date = Date.now
-        let formatter = DateFormatter()
         formatter.dateStyle = .full
         let formatted = formatter.string(from: date)
         return formatted
     }
     
     public static func currentHourFormatter () -> String {
-        let formatter = DateFormatter()
+        
+        
         formatter.dateFormat = "dd-MM-yyyy HH:mm Z"
-        let now = Date()
-        var dateString = formatter.string(from:now)
+        var dateString = formatter.string(from:date)
         NSLog("%@", dateString)
         dateString.removeLast(5)
         dateString.removeFirst(11)
