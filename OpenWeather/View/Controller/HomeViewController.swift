@@ -23,6 +23,16 @@ class HomeViewController: UIViewController {
         configureDelegates()
         getCities()
         self.title = "Cidades"
+        teste()
+    }
+    
+    private func teste () {
+        let date = Date.now
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.dateFormat = "HH:mm"
+        let formatted = formatter.string(from: date)
+        print ("A data é \(formatted)")
     }
 
     //MARK: - Private methods

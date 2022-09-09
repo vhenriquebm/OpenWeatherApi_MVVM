@@ -13,21 +13,15 @@ class DateUtils {
     static let date = Date.now
 
     static func getCurrentDate () -> String {
-        let date = Date.now
         formatter.dateStyle = .full
         let formatted = formatter.string(from: date)
         return formatted
     }
     
-    public static func currentHourFormatter () -> String {
-        
-        
-        formatter.dateFormat = "dd-MM-yyyy HH:mm Z"
-        var dateString = formatter.string(from:date)
-        NSLog("%@", dateString)
-        dateString.removeLast(5)
-        dateString.removeFirst(11)
-        return dateString
+    public static func getCurrentHour () -> String {
+        formatter.dateFormat = "HH:mm"
+        let formatted = formatter.string(from: date)
+        return formatted
     }
     
     // Date Formatter Pattern - Swift

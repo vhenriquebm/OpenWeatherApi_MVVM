@@ -89,7 +89,7 @@ class DetailViewController: UIViewController {
     }
         
     private func createTextForFooter () {
-        let footerText = "\(DateUtils.getCurrentDate()) - \( DateUtils.currentHourFormatter())"
+        let footerText = "\(DateUtils.getCurrentDate()) - \( DateUtils.getCurrentHour())"
         footerLabel.text = footerText
     }
     
