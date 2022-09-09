@@ -11,20 +11,22 @@ class DetailViewController: UIViewController {
     
     //MARK: - Properties
     
-    var city:City?
+    public var city:City?
     private var weatherInformaton: Welcome?
+    private let vm = ViewModel()
+
     
     //MARK: - Outlets
     
-    @IBOutlet weak var firstView: UIView!
+    @IBOutlet private weak var firstView: UIView!
     
-    @IBOutlet weak var secondView: UIView!
+    @IBOutlet private weak var secondView: UIView!
     
-    @IBOutlet weak var weatherStackView: UIStackView!
+    @IBOutlet private weak var weatherStackView: UIStackView!
     
-    @IBOutlet weak var watherDescriptionLabel: UILabel!
+    @IBOutlet private weak var watherDescriptionLabel: UILabel!
     
-    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet private weak var cityLabel: UILabel!
     
     @IBOutlet private weak var temperatureLabel: UILabel!
     
@@ -44,22 +46,18 @@ class DetailViewController: UIViewController {
     
     @IBOutlet private weak var longitudeLabel: UILabel!
     
-    @IBOutlet weak var acitivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var acitivityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var footerInformation: NSLayoutConstraint!
+    @IBOutlet private weak var footerInformation: NSLayoutConstraint!
     
-    @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet private weak var footerLabel: UILabel!
     
-    
-    
-    private let vm = ViewModel()
     
     //MARK: - Initializers
     
     override func viewDidLoad() {
         configureUI()
         getWeatherInformation()
-        
     }
     
     //MARK: - Private methods
@@ -71,6 +69,9 @@ class DetailViewController: UIViewController {
         firstView.isHidden = true
         secondView.isHidden = true
         configureTextForFooter()
+        firstView.layer.cornerRadius = 10
+        secondView.layer.cornerRadius = 10
+        weatherStackView.layer.cornerRadius = 10
     }
     
     private func configureTextForFooter () {
@@ -83,60 +84,29 @@ class DetailViewController: UIViewController {
         createTextForFooter(date: dateString)
     }
     
-    private func getCurrentHour () -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm Z"
-        let now = Date()
-        var dateString = formatter.string(from:now)
-        NSLog("%@", dateString)
-        print (dateString)
-        dateString.removeLast(5)
-        dateString.removeFirst(11)
-        print ("A Hora é \(dateString)")
-        return dateString
-    }
+  
     
     
-    func roundNumber (value: Double?) -> String  {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0
-        let formattedAmount = formatter.string(from: value! as NSNumber)
-        if let result = formattedAmount {
-            return result
-        }
-        
-        
-        
-        return ""
-    }
+    
+  
+    
+    
+  
     
     private func createTextForFooter (date: String) {
         let numberMonth = date[date.index(date.startIndex, offsetBy: 4)]
-        let month = Utils.getMonthName(month: String(numberMonth))
+        let month = DateUtils.getMonthName(month: String(numberMonth))
         guard let dayOfWeek = Date().dayOfWeek() else {return}
-        let hour = getCurrentHour()
-        let footerText = "\(dayOfWeek), 08 de \(month) de 2022 - \(hour)"
+    
+        let footerText = "\(dayOfWeek), \(DateUtils.getDay()) de \(month) de \(DateUtils.getYear()) - \( DateUtils.getCurrentHour())"
         footerLabel.text = footerText
     }
     
-    private func formateHour (interval:Int?) -> String {
-   
-        let date = Date(timeIntervalSince1970: TimeInterval(interval ?? 0))
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-            dateFormatter.locale = NSLocale.current
-            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm" //Specify your format that you want
-            var strDate = dateFormatter.string(from: date)
-            strDate.removeFirst(11)
-            
-        return strDate
-        }
+    
  
     
     private func getData () {
-        print (weatherInformaton)
+        
         cityLabel.text = city?.cidade
         
         guard let description = weatherInformaton?.weather else {return}
@@ -152,13 +122,11 @@ class DetailViewController: UIViewController {
         guard let latitude = weatherInformaton?.coord?.lat else {return}
         guard let longitude = weatherInformaton?.coord?.lat else {return}
         
-      
-        
-        temperatureLabel.text = "\(roundNumber(value: temperature))°C"
-        minimumTemperatureLabel.text = "\(roundNumber(value: minimum))°C"
-        maximumTemperatureLabel.text = "\(roundNumber(value: maximum))°C"
-        thermalSensationLabel.text = "\(roundNumber(value: thermalSensation))°C"
-        sunriseLabel.text = String(formateHour(interval: sunrise))
+        temperatureLabel.text = "\(NumberUtils.roundNumber(value: temperature))°C"
+        minimumTemperatureLabel.text = "\(NumberUtils.roundNumber(value: minimum))°C"
+        maximumTemperatureLabel.text = "\(NumberUtils.roundNumber(value: maximum))°C"
+        thermalSensationLabel.text = "\(NumberUtils.roundNumber(value: thermalSensation))°C"
+        sunriseLabel.text = String(DateUtils.formateHour(interval: sunrise))
         pressureLabel.text = String (pressure)
         humidityLabel.text = "\(String (humidity)) %"
         latitudeLabel.text = String (latitude)
@@ -187,8 +155,6 @@ class DetailViewController: UIViewController {
             
             self.weatherInformaton = weatherData
             
-            
-            
             DispatchQueue.main.async {
                 self.acitivityIndicator.stopAnimating()
                 self.acitivityIndicator.isHidden = true
@@ -201,12 +167,6 @@ class DetailViewController: UIViewController {
 }
 
 
-extension Date {
-    func dayOfWeek() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        return dateFormatter.string(from: self).capitalized
-    }
-}
+
 
 

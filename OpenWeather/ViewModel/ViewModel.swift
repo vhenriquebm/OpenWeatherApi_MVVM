@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ViewModel {
+class ViewModel: ViewModelProtocol {
     
     var citiesList:[City] = []
     

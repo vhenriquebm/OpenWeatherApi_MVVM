@@ -9,11 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let vm = ViewModel()
-    
     //MARK: - Constants
-
-    var citieslist:[City] = []
+    
+    private var citieslist:[City] = []
+    var vm: ViewModelProtocol?
     
     //MARK: - Properties
     
@@ -23,12 +22,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureVm()
         configureUI()
         getCities()
+        
     }
     
-    func getCities () {
-        vm.getCitesData { cities in
+    //MARK: - Private methods
+    private func configureUI() {
+        table.delegate = self
+        table.dataSource = self
+        
+    }
+    
+    private func getCities () {
+        vm?.getCitesData { cities in
             self.citieslist = cities
             DispatchQueue.main.async {
                 self.table.reloadData()
@@ -36,14 +44,12 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: - Private methods
-    private func configureUI() {
-        table.delegate = self
-        table.dataSource = self
-        table.backgroundColor = .systemGray5
+    private func configureVm () {
+        self.vm = ViewModel()
     }
 }
 
+//MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -52,11 +58,11 @@ extension HomeViewController: UITableViewDelegate {
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
         
         controller.city = citieslist[indexPath.row]
-        
         navigationController?.pushViewController(controller, animated: true)
-        
     }
 }
+
+//MARK: - UITableViewDataSource
 
 extension HomeViewController: UITableViewDataSource {
     
@@ -77,5 +83,9 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Cidades"
     }
 }
