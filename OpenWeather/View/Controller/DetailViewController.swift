@@ -58,19 +58,20 @@ class DetailViewController: UIViewController {
         configureUI()
         configureDelegates()
         getWeatherInformation()
-        self.title = "Detalhes"
-        createTextForFooter()
+        
     }
+    
+  
     
     //MARK: - Private methods
     
     private func configureUI () {
         configureActivityIndicator()
         hiddenSubViews()
-        
         firstView.layer.cornerRadius = 10
         secondView.layer.cornerRadius = 10
         weatherStackView.layer.cornerRadius = 10
+        self.title = "Detalhes"
     }
     
     private func configureActivityIndicator () {
@@ -89,7 +90,10 @@ class DetailViewController: UIViewController {
     }
         
     private func createTextForFooter () {
-        let footerText = "\(DateUtils.getCurrentDate()) - \( DateUtils.getCurrentHour())"
+        guard let timeZone = weatherInformaton?.timezone else {return}
+        
+        let footerText = "\(DateUtils.getCurrentDate()) - \(DateUtils.getCurrentHourFooter(timeZone: timeZone))"
+
         footerLabel.text = footerText
     }
     
@@ -108,6 +112,8 @@ class DetailViewController: UIViewController {
               let latitude = weatherInformaton?.coord?.lat,
               let longitude = weatherInformaton?.coord?.lat else {return}
         
+    print ("testando sunrise \(sunrise)")
+        
         configureFields(temperature: temperature, minimum: minimum, maximum: maximum, thermalSensation: thermalSensation, sunrise: sunrise, pressure: pressure, humidity: humidity, latitude: latitude, longitude: longitude)
         
         getWeatherDescription(descriptionList: description)
@@ -120,11 +126,13 @@ class DetailViewController: UIViewController {
         minimumTemperatureLabel.text = "\(NumberUtils.roundNumber(value: minimum)) °C"
         maximumTemperatureLabel.text = "\(NumberUtils.roundNumber(value: maximum)) °C"
         thermalSensationLabel.text = "\(NumberUtils.roundNumber(value: thermalSensation)) °C"
-        sunriseLabel.text = String(DateUtils.sunriseFormatter(interval: sunrise))
+        sunriseLabel.text = String(DateUtils.getCurrentHour(timeInterval: sunrise))
         pressureLabel.text = String (pressure)
         humidityLabel.text = "\(String (humidity)) %"
         latitudeLabel.text = String (NumberUtils.roundNumberWithComma(value: latitude))
         longitudeLabel.text = String (NumberUtils.roundNumberWithComma(value: longitude))
+        
+       print ("o sunrise é \(DateUtils.getCurrentHour(timeInterval: sunrise))")
     }
     
     //rever
@@ -141,6 +149,8 @@ class DetailViewController: UIViewController {
         secondView.isHidden = false
     }
     
+  
+    
     private func getWeatherInformation () {
         guard let latitude = city?.latitude else {return}
         guard let longitude = city?.longitude else {return}
@@ -148,8 +158,9 @@ class DetailViewController: UIViewController {
         delegate?.fetchWeatherData(latitude: latitude, longitude: longitude) { weatherData in
             
             self.weatherInformaton = weatherData
-            
+          
             DispatchQueue.main.async {
+                self.createTextForFooter()
                 self.acitivityIndicator.stopAnimating()
                 self.acitivityIndicator.isHidden = true
                 self.getData()
@@ -158,6 +169,9 @@ class DetailViewController: UIViewController {
         
     }
 }
+
+
+
 
 
 

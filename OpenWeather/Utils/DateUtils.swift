@@ -4,56 +4,45 @@
 //
 //  Created by vitor henrique on 08/09/22.
 //
+// Date Formatter Pattern - Swift
 
 import Foundation
 
 class DateUtils {
     
-    static let formatter = DateFormatter()
-    static let date = Date.now
-
     static func getCurrentDate () -> String {
+        let formatter = DateFormatter()
+        let date = Date.now
         formatter.dateStyle = .full
         let formatted = formatter.string(from: date)
         return formatted
     }
+
+    public static func getCurrentHour (timeInterval: Int) -> String {
+        let time = Double(timeInterval)
+        let date = Date(timeIntervalSince1970: time)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = TimeZone.current
+        let formatted = formatter.string(from: date)
+        return formatted
+    }
     
-    public static func getCurrentHour () -> String {
+    public static func getCurrentHourFooter (timeZone: Int) -> String {
+        let date = Date.now
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation:"UTC")
+        formatter.timeZone = TimeZone(secondsFromGMT: timeZone)
         formatter.dateFormat = "HH:mm"
         let formatted = formatter.string(from: date)
         return formatted
     }
     
-    // Date Formatter Pattern - Swift
-    public static func sunriseFormatter (interval:Int?) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(interval ?? 0))
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-        var strDate = dateFormatter.string(from: date)
-        strDate.removeFirst(11)
-        return strDate
-    }
     
-    static func getMonthName (month: String) -> String {
-        switch month {
-            
-        case "1":  return "janeiro"
-        case "2":  return "fevereiro"
-        case "3":  return "março"
-        case "4":  return "abril"
-        case "5":  return "maio"
-        case "6":  return "junho"
-        case "7":  return "julho"
-        case "8":  return "agosto"
-        case "9":  return "setembro"
-        case "10": return "outubro"
-        case "11": return "novembro"
-        case "12": return "dezembro"
-        default:   return ""
-        }
-    }
+   
+    
+    
+    
 }
 
 
