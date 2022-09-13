@@ -58,10 +58,7 @@ class DetailViewController: UIViewController {
         configureUI()
         configureDelegates()
         getWeatherInformation()
-        
     }
-    
-  
     
     //MARK: - Private methods
     
@@ -88,17 +85,17 @@ class DetailViewController: UIViewController {
     private func configureDelegates() {
         self.delegate = ViewModel()
     }
-        
+    
     private func createTextForFooter () {
         guard let timeZone = weatherInformaton?.timezone else {return}
+        guard let dt = weatherInformaton?.dt else {return}
         
-        let footerText = "\(DateUtils.getCurrentDate()) - \(DateUtils.getCurrentHourFooter(timeZone: timeZone))"
-
+        let footerText = "\(DateUtils.getCurrentHourFooter(timeZone: timeZone, dt: dt))"
+        
         footerLabel.text = footerText
     }
     
     private func getData () {
-        
         cityLabel.text = city?.cidade
         
         guard let description = weatherInformaton?.weather,
@@ -112,35 +109,25 @@ class DetailViewController: UIViewController {
               let latitude = weatherInformaton?.coord?.lat,
               let longitude = weatherInformaton?.coord?.lat else {return}
         
-    print ("testando sunrise \(sunrise)")
-        
-        configureFields(temperature: temperature, minimum: minimum, maximum: maximum, thermalSensation: thermalSensation, sunrise: sunrise, pressure: pressure, humidity: humidity, latitude: latitude, longitude: longitude)
-        
-        getWeatherDescription(descriptionList: description)
+        configureFields(temperature: temperature, minimum: minimum, maximum: maximum, thermalSensation: thermalSensation, sunrise: sunrise, pressure: pressure, humidity: humidity, latitude: latitude, longitude: longitude, description: description)
         
         showSubViews()
     }
     
-    private func configureFields (temperature: Double, minimum: Double, maximum: Double, thermalSensation: Double, sunrise: Int, pressure: Int, humidity: Int, latitude: Double, longitude: Double  ) {
+    private func configureFields (temperature: Double, minimum: Double, maximum: Double, thermalSensation: Double, sunrise: Int, pressure: Int, humidity: Int, latitude: Double, longitude: Double, description: [Weather] ) {
+        
+        guard let timeZone = weatherInformaton?.timezone else {return}
+        
         temperatureLabel.text = "\(NumberUtils.roundNumber(value: temperature)) °C"
         minimumTemperatureLabel.text = "\(NumberUtils.roundNumber(value: minimum)) °C"
         maximumTemperatureLabel.text = "\(NumberUtils.roundNumber(value: maximum)) °C"
         thermalSensationLabel.text = "\(NumberUtils.roundNumber(value: thermalSensation)) °C"
-        sunriseLabel.text = String(DateUtils.getCurrentHour(timeInterval: sunrise))
+        sunriseLabel.text = String(DateUtils.getCurrentHour(timeInterval: sunrise, timeZone: timeZone))
         pressureLabel.text = String (pressure)
         humidityLabel.text = "\(String (humidity)) %"
         latitudeLabel.text = String (NumberUtils.roundNumberWithComma(value: latitude))
         longitudeLabel.text = String (NumberUtils.roundNumberWithComma(value: longitude))
-        
-       print ("o sunrise é \(DateUtils.getCurrentHour(timeInterval: sunrise))")
-    }
-    
-    //rever
-    private func getWeatherDescription (descriptionList: [Weather]) {
-        for elements in descriptionList {
-            guard let desc = elements.weatherDescription else {return}
-            watherDescriptionLabel.text = String(desc)
-        }
+        watherDescriptionLabel.text = description.first?.weatherDescription
     }
     
     private func showSubViews () {
@@ -149,8 +136,6 @@ class DetailViewController: UIViewController {
         secondView.isHidden = false
     }
     
-  
-    
     private func getWeatherInformation () {
         guard let latitude = city?.latitude else {return}
         guard let longitude = city?.longitude else {return}
@@ -158,7 +143,7 @@ class DetailViewController: UIViewController {
         delegate?.fetchWeatherData(latitude: latitude, longitude: longitude) { weatherData in
             
             self.weatherInformaton = weatherData
-          
+            
             DispatchQueue.main.async {
                 self.createTextForFooter()
                 self.acitivityIndicator.stopAnimating()
@@ -166,7 +151,6 @@ class DetailViewController: UIViewController {
                 self.getData()
             }
         }
-        
     }
 }
 

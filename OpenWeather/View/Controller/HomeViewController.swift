@@ -54,6 +54,7 @@ extension HomeViewController: UITableViewDelegate {
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
         
         controller.city = citieslist[indexPath.row]
+
         navigationController?.pushViewController(controller, animated: true)
     }
 }

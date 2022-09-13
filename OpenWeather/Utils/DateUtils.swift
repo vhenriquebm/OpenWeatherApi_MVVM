@@ -10,40 +10,42 @@ import Foundation
 
 class DateUtils {
     
-    static func getCurrentDate () -> String {
-        let formatter = DateFormatter()
-        let date = Date.now
-        formatter.dateStyle = .full
-        let formatted = formatter.string(from: date)
-        return formatted
-    }
-
-    public static func getCurrentHour (timeInterval: Int) -> String {
-        let time = Double(timeInterval)
-        let date = Date(timeIntervalSince1970: time)
+    public static func getCurrentHour (timeInterval: Int, timeZone: Int) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        formatter.timeZone = TimeZone.current
-        let formatted = formatter.string(from: date)
-        return formatted
-    }
-    
-    public static func getCurrentHourFooter (timeZone: Int) -> String {
-        let date = Date.now
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation:"UTC")
+        
+        let dateInTime = timeInterval
+        let time = Date(timeIntervalSince1970: TimeInterval(dateInTime))
         formatter.timeZone = TimeZone(secondsFromGMT: timeZone)
-        formatter.dateFormat = "HH:mm"
-        let formatted = formatter.string(from: date)
-        return formatted
+        let result = formatter.string(from: time)
+        return result
     }
     
-    
-   
-    
-    
-    
+    public static func getCurrentHourFooter (timeZone: Int, dt: Int) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        
+        let dateInTime = dt
+        let time = Date(timeIntervalSince1970: TimeInterval(dateInTime))
+        formatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+        let result = formatter.string(from: time)
+        return result
+    }
 }
 
 
+extension Date {
+    func convertToLocalTime(timeZone timeZoneAbbreviation: String) -> Date? {
+        
+        if let timeZone = TimeZone(abbreviation: timeZoneAbbreviation) {
+            let targetOffset = TimeInterval(timeZone.secondsFromGMT(for: self))
+            let localOffeset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT(for: self))
 
+            return self.addingTimeInterval(targetOffset - localOffeset)
+        }
+    
+        return nil
+    }
+}

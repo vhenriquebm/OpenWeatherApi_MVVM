@@ -23,7 +23,7 @@ class ViewModel: ViewModelProtocol {
     }
     
     public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
-        weatherService.fetchWeatherData(latitude: latitude, longitude: latitude) { data in
+        weatherService.fetchWeatherData(latitude: latitude, longitude: longitude) { data in
             completion (data)
         }
     }

@@ -17,8 +17,13 @@ class OpenWeatherService {
     
     public func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ()) {
         
+      print ("a latitude no service é \(latitude)")
+      print ("a longitude no service é \(longitude)")
+
+        
         let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(key)&lang=\(lang)&units=\(unit)"
         
+        print (urlString)
         guard let url = URL(string: urlString) else {return}
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
