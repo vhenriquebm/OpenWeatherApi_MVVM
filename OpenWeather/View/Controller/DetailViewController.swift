@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     public var city:City?
     
     private var weatherInformaton: Welcome?
-    private var delegate:ViewModelProtocol?
+    private var delegate:DetailViewModel?
     
     //MARK: - Outlets
     
@@ -82,7 +82,7 @@ class DetailViewController: UIViewController {
     }
     
     private func configureDelegates() {
-        self.delegate = ViewModel(weatherService: OpenWeatherService(), apiService: ApiService())
+        self.delegate = DetailViewModel(weatherService: OpenWeatherService())
     }
     
     private func createTextForFooter () {

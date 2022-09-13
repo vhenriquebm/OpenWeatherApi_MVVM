@@ -7,9 +7,12 @@
 
 import Foundation
 
-protocol ViewModelProtocol {
+protocol HomeViewModelProtocol {
     
     func getCitesData(completion: @escaping ([City]) -> ())
+}
+
+protocol DetailViewModelProtocol {
     
     func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ())
 }

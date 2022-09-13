@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     //MARK: - Properties
     
     private var citieslist:[City] = []
-    var delegate: ViewModelProtocol?
+    var delegate: HomeViewModelProtocol?
     
     @IBOutlet weak var table: UITableView!
 
@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureDelegates () {
-        self.delegate = ViewModel(weatherService: OpenWeatherService(), apiService: ApiService())
+        self.delegate = HomeViewModel(apiService: ApiService())
         table.delegate = self
         table.dataSource = self
     }
