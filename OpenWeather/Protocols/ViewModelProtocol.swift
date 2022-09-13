@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ViewModelProtocol {
+    
     func getCitesData(completion: @escaping ([City]) -> ())
     
     func fetchWeatherData (latitude: Double, longitude: Double, completion: @escaping (Welcome) -> ())

@@ -68,8 +68,7 @@ class DetailViewController: UIViewController {
         firstView.layer.cornerRadius = 10
         secondView.layer.cornerRadius = 10
         weatherStackView.layer.cornerRadius = 10
-        self.title = "Detalhes"
-    }
+        self.title = LocalizableString.Details.view_tittle    }
     
     private func configureActivityIndicator () {
         acitivityIndicator.isHidden = false
@@ -83,7 +82,7 @@ class DetailViewController: UIViewController {
     }
     
     private func configureDelegates() {
-        self.delegate = ViewModel()
+        self.delegate = ViewModel(weatherService: OpenWeatherService(), apiService: ApiService())
     }
     
     private func createTextForFooter () {

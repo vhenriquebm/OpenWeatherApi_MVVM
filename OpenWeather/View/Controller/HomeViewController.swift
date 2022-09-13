@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
+        
     //MARK: - Properties
     
     private var citieslist:[City] = []
@@ -18,12 +18,11 @@ class HomeViewController: UIViewController {
 
     //MARK: - Initializers
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDelegates()
         getCities()
-        self.title = "Cidades"
+        self.title = LocalizableString.Home.view_tittle
     }
     
     //MARK: - Private methods
@@ -38,7 +37,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureDelegates () {
-        self.delegate = ViewModel()
+        self.delegate = ViewModel(weatherService: OpenWeatherService(), apiService: ApiService())
         table.delegate = self
         table.dataSource = self
     }
@@ -50,8 +49,8 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
+
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: LocalizableString.Details.controller_identifier) as? DetailViewController else {return}
         
         controller.city = citieslist[indexPath.row]
 
@@ -78,11 +77,11 @@ extension HomeViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Cidades"
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return LocalizableString.Home.table_tittle
     }
 }

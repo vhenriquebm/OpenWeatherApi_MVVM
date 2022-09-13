@@ -7,8 +7,10 @@
 */
 
 //MARK: - Home
-"home.title" = "Cidades";
+"home.title" = "Home";
+"table.tittle" = "Cidades";
 
-//MARK: - Detalhes
+//MARK: - Details
 
 "details.title" = "Detalhes";
+"controller.identifier" = "DetailViewController";

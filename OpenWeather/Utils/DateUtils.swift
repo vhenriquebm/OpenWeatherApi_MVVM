@@ -22,7 +22,6 @@ class DateUtils {
     }
     
     public static func getCurrentHourFooter (timeZone: Int, dt: Int) -> String {
-        
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         formatter.timeStyle = .short
@@ -36,16 +35,3 @@ class DateUtils {
 }
 
 
-extension Date {
-    func convertToLocalTime(timeZone timeZoneAbbreviation: String) -> Date? {
-        
-        if let timeZone = TimeZone(abbreviation: timeZoneAbbreviation) {
-            let targetOffset = TimeInterval(timeZone.secondsFromGMT(for: self))
-            let localOffeset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT(for: self))
-
-            return self.addingTimeInterval(targetOffset - localOffeset)
-        }
-    
-        return nil
-    }
-}

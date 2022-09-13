@@ -8,6 +8,19 @@
 import Foundation
 
 class LocalizableString {
-    let homeTitle = NSLocalizedString("Welcome", comment: "")
-let detailsTitle = NSLocalizedString("Welcome", comment: "")
+    
+    //MARK: - Home
+    
+    struct Home {
+        
+    static let view_tittle = NSLocalizedString("home.title", comment: "")
+    static let table_tittle = NSLocalizedString("table.tittle", comment: "")
+    }
+    
+    //MARK: - Details
+    
+    struct Details {
+        static let view_tittle = NSLocalizedString("details.title", comment: "")
+        static let controller_identifier = NSLocalizedString( "controller.identifier", comment: "")
+    }
 }
